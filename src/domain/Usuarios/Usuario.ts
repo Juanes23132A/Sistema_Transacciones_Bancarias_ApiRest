@@ -5,7 +5,7 @@ export class Usuario {
     nombre: string;
     email: string;
     telefono: string;
-    fecha_creacion_usuario: Date;
+    fecha_creacion_usuario?: Date;
     contrasenia: string;
 
     constructor(infoUsuario: {
@@ -13,7 +13,7 @@ export class Usuario {
         nombre: string;
         email: string;
         telefono: string;
-        fecha_creacion_usuario: Date;
+        fecha_creacion_usuario?: Date;
         contrasenia: string;
     }) {
         this.dni = infoUsuario.dni;

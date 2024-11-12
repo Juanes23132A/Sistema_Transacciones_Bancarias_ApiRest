@@ -3,14 +3,14 @@ export class TransferenciaBolsillos {
     bolsillo_origen_id: number;
     bolsillo_destino_id: number;
     monto: number;
-    fecha_transferencia: Date;
+    fecha_transferencia?: Date;
 
     constructor(infoTransferenciaBolsillos: {
         transferencia_bolsillos_id?: number;
         bolsillo_origen_id: number;
         bolsillo_destino_id: number;
         monto: number;
-        fecha_transferencia: Date;
+        fecha_transferencia?: Date;
     }) {
         this.transferencia_bolsillos_id = infoTransferenciaBolsillos.transferencia_bolsillos_id;
         this.bolsillo_origen_id = infoTransferenciaBolsillos.bolsillo_origen_id;

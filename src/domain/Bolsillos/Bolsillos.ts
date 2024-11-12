@@ -3,14 +3,14 @@ export class Bolsillo {
     usuario_id: number;
     nombre: string;
     saldo: number;
-    fecha_creacion_bolsillo: Date;
+    fecha_creacion_bolsillo?: Date;
 
     constructor(infoBolsillo: {
         bolsillo_id?: number;
         usuario_id: number;
         nombre: string;
         saldo: number;
-        fecha_creacion_bolsillo: Date;
+        fecha_creacion_bolsillo?: Date;
     }) {
         this.bolsillo_id = infoBolsillo.bolsillo_id;
         this.usuario_id = infoBolsillo.usuario_id;

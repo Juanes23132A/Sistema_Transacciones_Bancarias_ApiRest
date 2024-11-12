@@ -1,11 +1,11 @@
 import { EstadoCuenta, TipoCuenta } from "../Enums";
 
-export class CuentasUsuario {
+export class CuentaUsuario {
     cuenta_id?: number;
     usuario_id: number;
     tipo_cuenta: TipoCuenta;
-    saldo: number;
-    fecha_apertura: Date;
+    saldo?: number;
+    fecha_apertura?: Date;
     estado_cuenta: EstadoCuenta;
     contrasenia:  string;
 
@@ -13,8 +13,8 @@ export class CuentasUsuario {
         cuenta_id?:  number;
         usuario_id:  number;
         tipo_cuenta: TipoCuenta;
-        saldo: number;
-        fecha_apertura: Date;
+        saldo?: number;
+        fecha_apertura?: Date;
         estado_cuenta: EstadoCuenta;
         contrasenia: string;
     }) {
