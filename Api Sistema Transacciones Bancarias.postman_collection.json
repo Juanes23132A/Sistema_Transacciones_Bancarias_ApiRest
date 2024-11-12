@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "1ba211a9-d31a-463d-a401-0da1c23d16fb",
+		"name": "Api Sistema Transacciones Bancarias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38097320"
+	},
+	"item": [
+		{
+			"name": "Cuentas de usuarios",
+			"item": [
+				{
+					"name": "Crear cuenta de usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\":\"1020105732\",\r\n    \"nombre\":\"Juan Esteban Muñoz Cano\",\r\n    \"email\":\"bantees2005@gmail.com\",\r\n    \"telefono\":\"3053986249\",\r\n    \"contraseña\":\"Juanes23132A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cuenta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\":\"1020105732\",\r\n    \"email\":\"bantees2005@gmail.com\",\r\n    \"contraseña\":\"Juanes23132A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la manipulacion de las cuentas de usuario"
+		},
+		{
+			"name": "Cuentas Bancarias",
+			"item": [
+				{
+					"name": "Crear cuenta bancaria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario_id\":\"1020105732\",\r\n    \"tipo_cuenta\":\"ahorro\",\r\n    \"contraseña\":\"1204\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cuenta bancaria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuenta_id\":\"3546256\",\r\n    \"usuario_id\":\"1020105732\",\r\n    \"constraseñaUsuario\":\"Juanes23132A\",\r\n    \"contraseñaCuenta\":\"1204\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cuentas bancaria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\":\"1020105732\",\r\n    \"contraseñaUsuario\":\"Juanes23132A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoint relacionados con las cuentas bancarias de un usuario"
+		},
+		{
+			"name": "Bolsillos",
+			"item": [
+				{
+					"name": "Crear bolsillo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"vacaciones\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transferir a bolsillos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuenta_origen_id\":\"3546256\",\r\n    \"nombre\":\"vacaciones\",\r\n    \"monto\":\"500000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener bolsillos",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar bolsillo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"vacaciones\",\r\n    \"contraseñaUsuario\":\"Juanes23132A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transacciones",
+			"item": [
+				{
+					"name": "Transferencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuenta_origen_id\":\"3546256\",\r\n    \"cuenta_destino:id\":\"3546256\",\r\n    \"contraseñaCuenta\":\"1204\",\r\n    \"monto\":\"100000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuenta_origen_id\":\"3546256\",\r\n    \"cuenta_destino:id\":\"3546256\",\r\n    \"contraseñaCuenta\":\"1204\",\r\n    \"monto\":\"100000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Transacciones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuenta_id\":\"3546256\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
