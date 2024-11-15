@@ -6,7 +6,7 @@ export class CuentaUsuario {
     tipo_cuenta: TipoCuenta;
     saldo?: number;
     fecha_apertura?: Date;
-    estado_cuenta: EstadoCuenta;
+    estado_cuenta?: EstadoCuenta;
     contrasenia:  string;
 
     constructor (infoCuentaUsuario: {
@@ -15,7 +15,7 @@ export class CuentaUsuario {
         tipo_cuenta: TipoCuenta;
         saldo?: number;
         fecha_apertura?: Date;
-        estado_cuenta: EstadoCuenta;
+        estado_cuenta?: EstadoCuenta;
         contrasenia: string;
     }) {
         this.cuenta_id = infoCuentaUsuario.cuenta_id;

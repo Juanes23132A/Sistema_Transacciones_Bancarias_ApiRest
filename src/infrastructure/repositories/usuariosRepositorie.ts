@@ -6,7 +6,7 @@ export class UsuariosRepositorie {
 
     async crearUsuario(usuarios: Usuario) {
         const connection = getPoolConection();
-        const querySql = `INSERT INTO usuario (dni, nombre, email, telefono, contrasenia) VALUES (?, ?, ?, ?, ?)`;
+    const querySql = `INSERT INTO usuario (dni, nombre, email, telefono, contrasenia) VALUES (?, ?, ?, ?, ?)`;
         const values = [usuarios.dni, usuarios.nombre, usuarios.email, usuarios.telefono, usuarios.contrasenia];
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values)
         return result[0];

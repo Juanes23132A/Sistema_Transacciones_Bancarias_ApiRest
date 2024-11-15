@@ -30,7 +30,8 @@ export class UsuarioControllers {
             } else {
                 return { ok: false, mensaje: "Error al crear usuario" };
             }
-        } catch (error: any) {
+        }
+        catch (error: any) {
             console.log("Ha ocurrido un error al crear el usuario", error?.mensaje);
             throw error;
         }

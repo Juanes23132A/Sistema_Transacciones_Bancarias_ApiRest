@@ -13,7 +13,7 @@ export class CuentasControllers {
     async agregar(payload: {
         usuario_id: number;
         tipo_cuenta: TipoCuenta;
-        estado_cuenta: EstadoCuenta;
+        estado_cuenta: EstadoCuenta
         contrasenia: string;
     }) {
         try {
@@ -75,9 +75,9 @@ export class CuentasControllers {
     async eliminar(id: string) {
         const result: ResultSetHeader = await this.repositories.eliminarCuentaBancaria(id)
         if (result.affectedRows == 1) {
-            return { ok: true, message: "Usuario eliminado correctamente" };
+            return { ok: true, message: "Cuenta eliminada correctamente" };
         } else {
-            return { ok: false, message: "No se pudo eliminar el usuario" };
+            return { ok: false, message: "No se pudo eliminar la Cuenta" };
         }
     }
 }
