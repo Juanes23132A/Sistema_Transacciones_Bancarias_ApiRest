@@ -2,6 +2,7 @@ import { FieldPacket, ResultSetHeader } from "mysql2";
 import { getPoolConection } from "../../../config/data-source";
 import { CuentaUsuario } from "../../domain/Cuentas/CuentasUsuario";
 import { EstadoCuenta } from "../../domain/Enums";
+import { Usuario } from "../../domain/Usuarios/Usuario";
 
 export class CuentasRepositorie {
 
@@ -22,8 +23,16 @@ export class CuentasRepositorie {
 
     async bloquearCuenta(cuenta: CuentaUsuario) {
         const connection = getPoolConection();
-        const querySql = `UPDATE cuentas_usuario SET (estado_cuenta) WHERE usuario_id = ?  VALUES (?)`;
-        const values = [EstadoCuenta.INACTIVA, cuenta.usuario_id]
+        const querySql = `update cuentas_usuario SET estado_cuenta = 'inactiva' WHERE usuario_id = ? and cuenta_id = ? ;`;
+        const values = [cuenta.usuario_id, cuenta.cuenta_id]
+        const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
+        return result[0];
+    }
+
+    async activarCuenta(cuenta: CuentaUsuario) {
+        const connection = getPoolConection();
+        const querySql = `update cuentas_usuario SET estado_cuenta = 'activa' WHERE usuario_id = ? and cuenta_id = ? ;`;
+        const values = [cuenta.usuario_id, cuenta.cuenta_id]
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
         return result[0];
     }

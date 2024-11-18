@@ -65,6 +65,27 @@ export class CuentasControllers {
         }
     }
 
+    async activarCuenta(payload: {
+        cuenta_id: number;
+        usuario_id: number;
+    }) {
+        try {
+            const cuenta = ({
+                cuenta_id: payload.cuenta_id,
+                usuario_id: payload.usuario_id
+            });
+            const result = await this.repositories.activarCuenta(cuenta);
+            if (result.affectedRows == 1) {
+                return { ok: true, id: result.insertId };
+            } else {
+                return { ok: false, mensaje: "Error al activar la cuenta" };
+            }
+        } catch (error: any) {
+            console.log("Ha ocurrido un error al activar la cuenta", error?.mensaje);
+            throw error;
+        }
+    }
+
     async eliminar(id: string) {
         const result: ResultSetHeader = await this.repositories.eliminarCuentaBancaria(id)
         if (result.affectedRows == 1) {
