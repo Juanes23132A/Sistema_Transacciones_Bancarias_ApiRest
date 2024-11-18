@@ -45,20 +45,13 @@ export class CuentasControllers {
     }
 
     async bloquearCuenta(payload: {
-        cuenta_id?: number;
+        cuenta_id: number;
         usuario_id: number;
-        tipo_cuenta: TipoCuenta;
-        saldo?: number;
-        fecha_apertura?: Date;
-        estado_cuenta: EstadoCuenta;
-        contrasenia: string;
     }) {
         try {
-            const cuenta = new CuentaUsuario({
-                usuario_id: payload.usuario_id,
-                tipo_cuenta: payload.tipo_cuenta,
-                estado_cuenta: payload.estado_cuenta,
-                contrasenia: payload.contrasenia
+            const cuenta = ({
+                cuenta_id: payload.cuenta_id,
+                usuario_id: payload.usuario_id
             });
             const result = await this.repositories.bloquearCuenta(cuenta);
             if (result.affectedRows == 1) {

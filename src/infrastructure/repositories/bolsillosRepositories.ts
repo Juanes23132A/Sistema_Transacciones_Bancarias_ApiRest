@@ -19,10 +19,10 @@ export class BolsillosRepositorie {
         return result[0];
     }
 
-    async eliminarBolsillo(nombre: string) {
+    async eliminarBolsillo(bolsillo: Bolsillo) {
         const connection = getPoolConection();
-        const querySql = `DELETE FROM bolsillos WHERE nombre = ?`;
-        const values = [nombre];
+        const querySql = `DELETE FROM bolsillos WHERE usuario_id = ? AND nombre = ?`;
+        const values = [bolsillo.usuario_id, bolsillo.nombre];
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
         return result[0];
     }

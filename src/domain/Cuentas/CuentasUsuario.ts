@@ -3,20 +3,20 @@ import { EstadoCuenta, TipoCuenta } from "../Enums";
 export class CuentaUsuario {
     cuenta_id?: number;
     usuario_id: number;
-    tipo_cuenta: TipoCuenta;
+    tipo_cuenta?: TipoCuenta;
     saldo?: number;
     fecha_apertura?: Date;
     estado_cuenta?: EstadoCuenta;
-    contrasenia:  string;
+    contrasenia?:  string;
 
     constructor (infoCuentaUsuario: {
         cuenta_id?:  number;
         usuario_id:  number;
-        tipo_cuenta: TipoCuenta;
+        tipo_cuenta?: TipoCuenta;
         saldo?: number;
         fecha_apertura?: Date;
         estado_cuenta?: EstadoCuenta;
-        contrasenia: string;
+        contrasenia?: string;
     }) {
         this.cuenta_id = infoCuentaUsuario.cuenta_id;
         this.usuario_id = infoCuentaUsuario.usuario_id;

@@ -6,7 +6,7 @@ export const bolsillosRoutes = () => {
 
     const bolsilloCtrl = new BolsillosControllers();
 
-    router.post("/vehiculos", (req, res) => {
+    router.post("/bolsillos", (req, res) => {
         const payload = req.body;
         bolsilloCtrl
             .agregar(payload)
@@ -18,7 +18,7 @@ export const bolsillosRoutes = () => {
             });
     });
 
-    router.get("/vehiculos", async (_, res) => {
+    router.get("/bolsillos", async (_, res) => {
         try {
             const result = await bolsilloCtrl.obtener();
             res.send(result);
@@ -29,14 +29,10 @@ export const bolsillosRoutes = () => {
         }
     });
 
-    router.delete("/vehiculos/:id", async (req, res) => {
+    router.delete("/bolsillos", async (req, res) => {
+        const payload = req.body;
         try {
-            const id = req.params.id;
-            if (Number.isNaN(id)) {
-                res.status(400).send({ ok: false, message: "Error en el id enviado" });
-                return;
-            }
-            const result = await bolsilloCtrl.eliminar(id);
+            const result = await bolsilloCtrl.eliminar(payload);
             const status = result.ok === true ? 200 : 400;
             res.status(status).send(result);
         } catch (error) {

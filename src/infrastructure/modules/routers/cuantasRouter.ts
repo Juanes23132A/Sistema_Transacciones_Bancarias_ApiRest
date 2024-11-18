@@ -18,7 +18,7 @@ export const cuentasRoutes = () => {
             });
     });
 
-    router.put("/cuentas", (req, res) => {
+    router.post("/cuentas", (req, res) => {
         const payload = req.body;
         cuentaCtrl
             .bloquearCuenta(payload)

@@ -28,8 +28,8 @@ export class BolsillosControllers {
             }
         }
         catch (error: any) {
-            console.log("Ha ocurrido un error al crear el usuario", error.mensaje);
-
+            console.log("Ha ocurrido un error al crear el bolsillo", error.mensaje);
+            throw error;
         }
     }
 
@@ -42,8 +42,8 @@ export class BolsillosControllers {
         }
     }
 
-    async eliminar(nombre: string) {
-        const result: ResultSetHeader = await this.repositories.eliminarBolsillo(nombre)
+    async eliminar(bolsillo: Bolsillo) {
+        const result: ResultSetHeader = await this.repositories.eliminarBolsillo(bolsillo)
         if (result.affectedRows == 1) {
             return { ok: true, message: "Bolsillo eliminado correctamente" };
         } else {
