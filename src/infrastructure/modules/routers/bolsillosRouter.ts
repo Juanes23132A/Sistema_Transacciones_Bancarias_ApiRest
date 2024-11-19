@@ -24,7 +24,7 @@ export const bolsillosRoutes = () => {
             res.send(result);
         } catch (error) {
             res.send({
-                message: "Ha ocurrido un error al consultar los vehiculos",
+                message: "Ha ocurrido un error al consultar el bolsillo",
             });
         }
     });

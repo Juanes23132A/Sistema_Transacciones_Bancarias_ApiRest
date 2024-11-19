@@ -1,6 +1,6 @@
 import { ResultSetHeader } from "mysql2";
 import { Usuario } from "../domain/Usuarios/Usuario";
-import { UsuariosRepositorie } from "../infrastructure/repositories/usuariosRepositorie";
+import { UsuariosRepositorie } from "../infrastructure/repositories/usuariosRepositories";
 
 export class UsuarioControllers {
     private repositories: UsuariosRepositorie;

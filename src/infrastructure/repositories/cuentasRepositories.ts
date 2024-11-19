@@ -2,7 +2,6 @@ import { FieldPacket, ResultSetHeader } from "mysql2";
 import { getPoolConection } from "../../../config/data-source";
 import { CuentaUsuario } from "../../domain/Cuentas/CuentasUsuario";
 import { EstadoCuenta } from "../../domain/Enums";
-import { Usuario } from "../../domain/Usuarios/Usuario";
 
 export class CuentasRepositorie {
 
