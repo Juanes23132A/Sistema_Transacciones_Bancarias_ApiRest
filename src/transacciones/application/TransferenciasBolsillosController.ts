@@ -23,10 +23,10 @@ export class TransferenciasBolsillosController {
             if (result.affectedRows == 1) {
                 return { ok: true };
             } else {
-                return { ok: false, mensaje: "Error al crear la cuenta" };
+                return { ok: false, mensaje: "Error al crear la transferir al bolsillo" };
             }
         } catch (error: any) {
-            console.log("Ha ocurrido un error al crear la cuenta", error?.mensaje);
+            console.log("Ha ocurrido un error al transferir al bolsillo", error?.mensaje);
             throw error;
         }
     }

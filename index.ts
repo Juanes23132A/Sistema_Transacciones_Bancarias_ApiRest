@@ -14,8 +14,7 @@ const crearServer = () => {
     app.use("/api/v1", routes());
 
     app.use(middleware404);
-
-    app.use("/api/v1/", routes())
+    
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Servidor Api-Rest ejecutando: http://localhost:${PORT}`)
