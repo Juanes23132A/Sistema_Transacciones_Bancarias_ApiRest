@@ -4,6 +4,7 @@ import { usuarioRoutes } from "./usuariosRouter";
 import { cuentasRoutes } from "./cuantasRouter";
 import { bolsillosTransferenciaRoutes } from "./transaccionesBolsillosRouter";
 import { depositosRoutes } from "./depositosRouter";
+import { transferenciaRoutes } from "./transferenciasRouter";
 
 export const routes = () => {
     const router = Express.Router();
@@ -15,6 +16,7 @@ export const routes = () => {
     router.use(bolsillosRoutes());
     router.use(bolsillosTransferenciaRoutes());
     router.use(depositosRoutes());
+    router.use(transferenciaRoutes());
 
     return router;
 }

@@ -44,16 +44,30 @@ export const cuentasRoutes = () => {
             });
     });
 
-    router.get("/cuentas", async (_, res) => {
-        try {
-            const result = await cuentaCtrl.obtener();
-            res.send(result);
-        } catch (error) {
-            res.send({
-                message: "Ha ocurrido un error al consultar las cuentas",
+    router.get("/cuentas", (req, res) => {
+        const payload = req.body;
+        cuentaCtrl
+            .obtener(payload)
+            .then((result) => {
+                res.send(result);
+            })
+            .catch((error) => {
+                res.status(500).send(error);
             });
-        }
     });
+
+    router.get("/cuentasTransferencias", (req, res) => {
+        const payload = req.body;
+        cuentaCtrl
+            .obtenerTransacciones(payload)
+            .then((result) => {
+                res.send(result);
+            })
+            .catch((error) => {
+                res.status(500).send(error);
+            });
+    });
+
 
     router.delete("/cuentas/:id", async (req, res) => {
         try {

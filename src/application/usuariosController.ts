@@ -36,7 +36,7 @@ export class UsuarioControllers {
             throw error;
         }
     }
-
+    
     async eliminar(dni: string) {
         const result: ResultSetHeader = await this.repositories.eliminarUsuario(dni)
         if (result.affectedRows == 1) {

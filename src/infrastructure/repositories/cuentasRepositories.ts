@@ -13,10 +13,19 @@ export class CuentasRepositorie {
         return result[0];
     }
 
-    async obtenerCuenta() {
+    async obtener(dni:string) {
         const connection = getPoolConection();
-        const querySql = `SELECT * FROM cuentas_usuario`;
-        const result = await connection.query(querySql);
+        const querySql = `SELECT * FROM cuentas_usuario WHERE usuario_id = ?`;
+        const values = [dni]
+        const result = await connection.query(querySql, values);
+        return result[0];
+    }
+
+    async obtenerTransacciones(dni:string) {
+        const connection = getPoolConection();
+        const querySql = `SELECT * FROM transacciones WHERE usuario_id = ? OR usuario_destino_id = ?`;
+        const values = [dni, dni]
+        const result = await connection.query(querySql, values);
         return result[0];
     }
 

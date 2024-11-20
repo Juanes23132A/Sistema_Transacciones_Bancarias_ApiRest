@@ -35,9 +35,24 @@ export class CuentasControllers {
         }
     }
 
-    async obtener() {
+    async obtener(payload: {
+        dni: string;
+    }) {
         try {
-            const result = await this.repositories.obtenerCuenta();
+            const dni = payload.dni;
+            const result = await this.repositories.obtener(dni);
+            return result;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    async obtenerTransacciones(payload: {
+        dni: string;
+    }) {
+        try {
+            const dni = payload.dni;
+            const result = await this.repositories.obtenerTransacciones(dni);
             return result;
         } catch (error) {
             return error;

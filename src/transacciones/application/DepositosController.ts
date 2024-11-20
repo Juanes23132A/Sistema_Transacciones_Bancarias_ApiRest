@@ -10,14 +10,14 @@ export class depositosController {
     }
 
     async depositar(payload: {
-        usuario_id: number
+        usuario_destino_id: number
         cuenta_destino_id: number;
         monto: number;
         tipo_transaccion: TipoTransaccion;
     }) {
         try {
             const deposito = new TransferenciasDepositos({
-                usuario_id: payload.usuario_id,
+                usuario_destino_id: payload.usuario_destino_id,
                 cuenta_destino_id: payload.cuenta_destino_id,
                 monto: payload.monto,
                 tipo_transaccion: payload.tipo_transaccion
