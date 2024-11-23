@@ -85,10 +85,10 @@ export class CuentasControllers {
         usuario_id: number;
     }) {
         try {
-            const cuenta = ({
+            const cuenta = {
                 cuenta_id: payload.cuenta_id,
                 usuario_id: payload.usuario_id
-            });
+            };
             const result = await this.repositories.activarCuenta(cuenta);
             if (result.affectedRows == 1) {
                 return { ok: true, id: result.insertId };

@@ -1,6 +1,6 @@
 import { FieldPacket, ResultSetHeader  } from "mysql2";
 import { getPoolConection } from "../../../config/data-source";
-import { TransferenciasDepositos } from "../domain/deposito";
+import { TransferenciasDepositos } from "../domain/Deposito";
 import { TipoTransaccion } from "../../domain/Enums";
 
 export class transaccionesRepositorie {

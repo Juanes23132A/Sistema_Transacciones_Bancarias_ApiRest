@@ -12,8 +12,3 @@ export enum TipoTransaccion {
     TRANSFERENCIA = 'transferencia',
     DEPOSITO = 'deposito',
 }
-
-export enum EstadoTransaccion {
-    COMPLETADA = 'completada',
-    FALLIDA = 'fallida',
-}

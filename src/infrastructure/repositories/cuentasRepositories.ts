@@ -37,7 +37,7 @@ export class CuentasRepositorie {
         return result[0];
     }
 
-    async activarCuenta(cuenta: CuentaUsuario) {
+    async activarCuenta(cuenta: any) {
         const connection = getPoolConection();
         const querySql = `update cuentas_usuario SET estado_cuenta = 'activa' WHERE usuario_id = ? and cuenta_id = ? ;`;
         const values = [cuenta.usuario_id, cuenta.cuenta_id]

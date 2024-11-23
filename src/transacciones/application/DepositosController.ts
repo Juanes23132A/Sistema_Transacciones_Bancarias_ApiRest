@@ -1,5 +1,5 @@
 import { TipoTransaccion } from "../../domain/Enums";
-import { TransferenciasDepositos } from "../domain/deposito";
+import { TransferenciasDepositos } from "../domain/Deposito";
 import { transaccionesRepositorie } from "../infrastructure/DepositoRepositorie";
 
 export class depositosController {
