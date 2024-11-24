@@ -1,10 +1,10 @@
 import Express from "express";
-import { bolsillosRoutes } from "./bolsillosRouter";
-import { usuarioRoutes } from "./usuariosRouter";
-import { cuentasRoutes } from "./cuantasRouter";
-import { bolsillosTransferenciaRoutes } from "./transaccionesBolsillosRouter";
-import { depositosRoutes } from "./depositosRouter";
-import { transferenciaRoutes } from "./transferenciasRouter";
+import { bolsillosRoutes } from "./BolsillosRouter";
+import { usuarioRoutes } from "./UsuariosRouter";
+import { cuentasRoutes } from "./CuantasRouter";
+import { bolsillosTransferenciaRoutes } from "./TransaccionesBolsillosRouter";
+import { depositosRoutes } from "./DepositosRouter";
+import { transferenciaRoutes } from "./TransferenciasRouter";
 
 export const routes = () => {
     const router = Express.Router();

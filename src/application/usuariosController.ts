@@ -1,6 +1,7 @@
 import { ResultSetHeader } from "mysql2";
 import { Usuario } from "../domain/Usuarios/Usuario";
 import { UsuariosRepositorie } from "../infrastructure/repositories/usuariosRepositories";
+import { BcryptService } from "../services/bcrypt";
 
 export class UsuarioControllers {
     private repositories: UsuariosRepositorie;
@@ -24,6 +25,9 @@ export class UsuarioControllers {
                 telefono: payload.telefono,
                 contrasenia: payload.contrasenia
             });
+            const password = payload.contrasenia;
+            const hash = await BcryptService.hashPassword(password)
+            usuario.contrasenia = hash
             const result = await this.repositories.crearUsuario(usuario);
             if (result.affectedRows == 1) {
                 return { ok: true, id: result.insertId };

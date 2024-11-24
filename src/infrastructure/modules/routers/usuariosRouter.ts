@@ -1,5 +1,5 @@
 import Express from "express";
-import { UsuarioControllers } from "../../../application/usuariosController";
+import { UsuarioControllers } from "../../../application/UsuariosController";
 
 export const usuarioRoutes = () => {
     const router = Express.Router();

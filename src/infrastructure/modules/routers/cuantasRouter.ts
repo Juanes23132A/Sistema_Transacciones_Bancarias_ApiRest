@@ -1,5 +1,5 @@
 import Express from "express";
-import { CuentasControllers } from "../../../application/cuentasController";
+import { CuentasControllers } from "../../../application/CuentasController";
 
 export const cuentasRoutes = () => {
     const router = Express.Router();

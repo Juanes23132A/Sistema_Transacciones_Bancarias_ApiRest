@@ -29,10 +29,10 @@ export class CuentasRepositorie {
         return result[0];
     }
 
-    async bloquearCuenta(cuenta: CuentaUsuario) {
+    async bloquearCuenta(usuario_id: number, cuenta_id: number) {
         const connection = getPoolConection();
         const querySql = `update cuentas_usuario SET estado_cuenta = 'inactiva' WHERE usuario_id = ? and cuenta_id = ? ;`;
-        const values = [cuenta.usuario_id, cuenta.cuenta_id]
+        const values = [usuario_id, cuenta_id]
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
         return result[0];
     }

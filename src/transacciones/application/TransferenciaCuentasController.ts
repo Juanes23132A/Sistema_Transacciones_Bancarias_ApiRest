@@ -1,4 +1,6 @@
+import { queryObjects } from "node:v8";
 import { TipoTransaccion } from "../../domain/Enums";
+import { hashPassword, verifyPassword } from "../../services/bcrypt";
 import { TransferenciasCuentas } from "../domain/TranferenciaCuentas";
 import { transferenciasRepositorie } from "../infrastructure/TransferenciaCuentasRepositorie";
 
@@ -28,11 +30,17 @@ export class TransferenciasController {
                 tipo_transaccion: payload.tipo_transaccion,
                 contrasenia: payload.contrasenia
             });
-            const result = await this.repositories.Transferir(transferencia)
-            if (result.affectedRows == 1) {
-                return { ok: true };
-            } else {
-                return { ok: false, mensaje: "Error al transferir" };
+            const obtenerContrasenia = await this.repositories.obtenerContrasenia(payload.usuario_id, payload.cuenta_origen_id);
+            const validarhash = await verifyPassword(payload.contrasenia, obtenerContrasenia);
+            if(validarhash == false ){
+                return { ok: false, mensaje: "Contraseña incorrecta"}
+            } else{
+                const result = await this.repositories.Transferir(transferencia)
+                if (result.affectedRows == 1) {
+                    return { ok: true };
+                } else {
+                    return { ok: false, mensaje: "Error al transferir" };
+                }
             }
         } catch (error: any) {
             console.log("Ha ocurrido un error al transferir", error?.mensaje);

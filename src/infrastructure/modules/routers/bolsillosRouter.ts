@@ -1,5 +1,5 @@
 import Express from "express";
-import { BolsillosControllers } from "../../../application/bolsillosController";
+import { BolsillosControllers } from "../../../application/BolsillosController";
 
 export const bolsillosRoutes = () => {
     const router = Express.Router();

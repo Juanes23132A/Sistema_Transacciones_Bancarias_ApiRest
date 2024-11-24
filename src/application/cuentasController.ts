@@ -2,6 +2,7 @@ import { ResultSetHeader } from "mysql2";
 import { CuentaUsuario } from "../domain/Cuentas/CuentasUsuario";
 import { CuentasRepositorie } from "../infrastructure/repositories/cuentasRepositories";
 import { EstadoCuenta, TipoCuenta } from "../domain/Enums";
+import { BcryptService } from "../services/bcrypt";
 
 export class CuentasControllers {
     private repositories: CuentasRepositorie;
@@ -23,6 +24,9 @@ export class CuentasControllers {
                 estado_cuenta: payload.estado_cuenta,
                 contrasenia: payload.contrasenia
             });
+            const password = payload.contrasenia;
+            const hash = await BcryptService.hashPassword(password)
+            cuenta.contrasenia = hash
             const result = await this.repositories.crearCuenta(cuenta);
             if (result.affectedRows == 1) {
                 return { ok: true, id: result.insertId };
@@ -60,15 +64,15 @@ export class CuentasControllers {
     }
 
     async bloquearCuenta(payload: {
-        cuenta_id: number;
         usuario_id: number;
+        cuenta_id: number;
     }) {
         try {
             const cuenta = ({
-                cuenta_id: payload.cuenta_id,
-                usuario_id: payload.usuario_id
+                usuario_id: payload.usuario_id,
+                cuenta_id: payload.cuenta_id
             });
-            const result = await this.repositories.bloquearCuenta(cuenta);
+            const result = await this.repositories.bloquearCuenta(cuenta.usuario_id, cuenta.cuenta_id);
             if (result.affectedRows == 1) {
                 return { ok: true, id: result.insertId };
             } else {
