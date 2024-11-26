@@ -19,5 +19,5 @@ En las funsionalidades clave que ya hemos implementado, destacan la apertura de 
 - MySql
 ## Autor
 
-- (Juan Esteban Muñoz Cano)[www.linkedin.com/in/juan-esteban-muñoz-cano-backend-developer]
+- Juan Esteban Muñoz Cano [www.linkedin.com/in/juan-esteban-muñoz-cano-backend-developer]
 
