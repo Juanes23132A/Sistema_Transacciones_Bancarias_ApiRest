@@ -18,6 +18,17 @@ export class transferenciasRepositorie {
         return result1[0], result2[0], result3[0];
     }
 
+    async obtenerEstadoCuenta(usuario_id: number, cuenta_id: number){
+        const connection = getPoolConection();
+        const querySql = `SELECT estado_cuenta FROM cuentas_usuario WHERE usuario_id = ? AND cuenta_id = ?;`;
+        const values = [usuario_id, cuenta_id];
+        const result = await connection.query(querySql, values);
+        const resultString = JSON.stringify(result)
+        const parsedData = JSON.parse(resultString);
+        const estado_cuenta = parsedData[0][0].estado_cuenta;
+        return estado_cuenta
+    }
+
     async obtenerContrasenia(usuario_id: number, cuenta_id: number){
         const connection = getPoolConection();
         const querySql = `SELECT contrasenia FROM cuentas_usuario WHERE usuario_id = ? AND cuenta_id = ?;`;
@@ -27,5 +38,16 @@ export class transferenciasRepositorie {
         const parsedData = JSON.parse(resultString);
         const contrasenia = parsedData[0][0].contrasenia;
         return contrasenia
+    }
+
+    async obtenerSaldo(usuario_id: number, cuenta_id: number){
+        const connection = getPoolConection();
+        const querySql = `SELECT saldo FROM cuentas_usuario WHERE usuario_id = ? AND cuenta_id = ?;`;
+        const values = [usuario_id, cuenta_id];
+        const result = await connection.query(querySql, values);
+        const resultNumber = JSON.stringify(result)
+        const parsedData = JSON.parse(resultNumber);
+        const saldo = Number(parsedData[0][0].saldo);
+        return saldo
     }
 }

@@ -28,17 +28,6 @@ export const bolsillosRoutes = () => {
             });
         }
     });
-
-    router.delete("/bolsillos", async (req, res) => {
-        const payload = req.body;
-        try {
-            const result = await bolsilloCtrl.eliminar(payload);
-            const status = result.ok === true ? 200 : 400;
-            res.status(status).send(result);
-        } catch (error) {
-            res.status(500).send(error);
-        }
-    });
     
     return router;
 }

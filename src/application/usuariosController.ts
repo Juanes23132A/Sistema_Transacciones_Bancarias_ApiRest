@@ -1,4 +1,3 @@
-import { ResultSetHeader } from "mysql2";
 import { Usuario } from "../domain/Usuarios/Usuario";
 import { UsuariosRepositorie } from "../infrastructure/repositories/usuariosRepositories";
 import { BcryptService } from "../services/bcrypt";
@@ -38,15 +37,6 @@ export class UsuarioControllers {
         catch (error: any) {
             console.log("Ha ocurrido un error al crear el usuario", error?.mensaje);
             throw error;
-        }
-    }
-    
-    async eliminar(dni: string) {
-        const result: ResultSetHeader = await this.repositories.eliminarUsuario(dni)
-        if (result.affectedRows == 1) {
-            return { ok: true, mensaje: "Usuario eliminado correctamente" }
-        } else {
-            return { ok: false, mensaje: "No se pudo eliminar el usuario" }
         }
     }
 }

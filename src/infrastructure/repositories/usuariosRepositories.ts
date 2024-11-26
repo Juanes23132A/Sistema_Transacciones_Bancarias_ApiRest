@@ -11,12 +11,4 @@ export class UsuariosRepositorie {
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values)
         return result[0];
     }
-
-    async eliminarUsuario(dni: string) {
-        const connection = getPoolConection();
-        const querySql = `DELETE FROM usuario WHERE dni = ?`;
-        const values = [dni];
-        const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
-        return result[0];
-    }
 }

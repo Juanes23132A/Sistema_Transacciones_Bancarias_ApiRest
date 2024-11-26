@@ -44,12 +44,4 @@ export class CuentasRepositorie {
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
         return result[0];
     }
-
-    async eliminarCuentaBancaria(id: string) {
-        const connection = getPoolConection();
-        const querySql = `DELETE FROM cuentas_usuario WHERE cuenta_id = ?`;
-        const values = [id];
-        const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
-        return result[0];
-    }
 }

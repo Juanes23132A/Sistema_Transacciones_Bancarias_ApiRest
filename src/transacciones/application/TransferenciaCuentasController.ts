@@ -6,7 +6,7 @@ import { transferenciasRepositorie } from "../infrastructure/TransferenciaCuenta
 
 export class TransferenciasController {
     private repositories: transferenciasRepositorie;
-    
+
     constructor() {
         this.repositories = new transferenciasRepositorie();
     }
@@ -32,15 +32,26 @@ export class TransferenciasController {
             });
             const obtenerContrasenia = await this.repositories.obtenerContrasenia(payload.usuario_id, payload.cuenta_origen_id);
             const validarhash = await verifyPassword(payload.contrasenia, obtenerContrasenia);
-            if(validarhash == false ){
-                return { ok: false, mensaje: "Contraseña incorrecta"}
-            } else{
-                const result = await this.repositories.Transferir(transferencia)
-                if (result.affectedRows == 1) {
-                    return { ok: true };
+            const validarSaldo = await this.repositories.obtenerSaldo(payload.usuario_id, payload.cuenta_origen_id);
+            const validarEstadoCuentaOrigen = await this.repositories.obtenerEstadoCuenta(payload.usuario_id, payload.cuenta_origen_id);
+            const validarEstadoCuentaDestino = await this.repositories.obtenerEstadoCuenta(payload.usuario_destino_id, payload.cuenta_destino_id);
+            if (validarEstadoCuentaOrigen == "activa" && validarEstadoCuentaDestino == "activa"){
+                if (validarhash == false) {
+                    return { ok: false, mensaje: "Contraseña incorrecta" }
                 } else {
-                    return { ok: false, mensaje: "Error al transferir" };
+                    if (validarSaldo >= 0 && validarSaldo >= payload.monto) {
+                        const result = await this.repositories.Transferir(transferencia)
+                        if (result.affectedRows == 1) {
+                            return { ok: true };
+                        } else {
+                            return { ok: false, mensaje: "Error al transferir" };
+                        }
+                    }else{
+                        return { ok: false, mensaje: "Error saldo insuficiente"}
+                    }
                 }
+            }else{
+                return { ok: false, mensaje: "Cuenta incactiva"}
             }
         } catch (error: any) {
             console.log("Ha ocurrido un error al transferir", error?.mensaje);

@@ -7,17 +7,17 @@ const crearServer = () => {
 
     app.use(Express.json());
 
+    app.use(routes());
     app.get("/api", (req, res) => {
         res.send({ mensaje: "Bienvenido a la Api"});
     });
-
+    
     app.use("/api/v1", routes());
-
     app.use(middleware404);
     
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
-    console.log(`Servidor Api-Rest ejecutando: http://localhost:${PORT}`)
+    console.log(`Servidor Api-Rest ejecutando: http://localhost:${PORT}`);
   })
 }
 crearServer()

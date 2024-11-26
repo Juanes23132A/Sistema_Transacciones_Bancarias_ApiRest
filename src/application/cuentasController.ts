@@ -1,4 +1,3 @@
-import { ResultSetHeader } from "mysql2";
 import { CuentaUsuario } from "../domain/Cuentas/CuentasUsuario";
 import { CuentasRepositorie } from "../infrastructure/repositories/cuentasRepositories";
 import { EstadoCuenta, TipoCuenta } from "../domain/Enums";
@@ -102,15 +101,6 @@ export class CuentasControllers {
         } catch (error: any) {
             console.log("Ha ocurrido un error al activar la cuenta", error?.mensaje);
             throw error;
-        }
-    }
-
-    async eliminar(id: string) {
-        const result: ResultSetHeader = await this.repositories.eliminarCuentaBancaria(id)
-        if (result.affectedRows == 1) {
-            return { ok: true, message: "Cuenta eliminada correctamente" };
-        } else {
-            return { ok: false, message: "No se pudo eliminar la Cuenta" };
         }
     }
 }

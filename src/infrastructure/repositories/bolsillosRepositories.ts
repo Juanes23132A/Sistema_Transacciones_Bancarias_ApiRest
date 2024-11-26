@@ -7,7 +7,7 @@ export class BolsillosRepositorie {
     async crearBolsillo(bolsillo: Bolsillo) {
         const connection = getPoolConection();
         const querySql = `INSERT INTO bolsillos (usuario_id, nombre, saldo) VALUES (?, ?, ?)`;
-        const values = [bolsillo.usuario_id, bolsillo.nombre, bolsillo.saldo];
+        const values = [bolsillo.usuario_id, bolsillo.nombre, bolsillo.saldo = 0];
         const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
         return result[0];
     }
@@ -16,14 +16,6 @@ export class BolsillosRepositorie {
         const connection = getPoolConection();
         const querySql = `SELECT * FROM bolsillos`;
         const result = await connection.query(querySql);
-        return result[0];
-    }
-
-    async eliminarBolsillo(bolsillo: Bolsillo) {
-        const connection = getPoolConection();
-        const querySql = `DELETE FROM bolsillos WHERE usuario_id = ? AND nombre = ?`;
-        const values = [bolsillo.usuario_id, bolsillo.nombre];
-        const result: [ResultSetHeader, FieldPacket[]] = await connection.query(querySql, values);
         return result[0];
     }
 }
