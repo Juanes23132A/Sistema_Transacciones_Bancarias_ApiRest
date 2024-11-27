@@ -6,6 +6,35 @@ export const depositosRoutes = () => {
 
     const depositoCtrl = new depositosController();
 
+    /**
+    * @swagger
+    * /depositar:
+    *   post:
+    *     summary: Deposita a una cuenta
+    *     tags:
+    *       - Depositar
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             properties: 
+    *               usuario_destino_id:
+    *                  type: number
+    *               cuenta_destino_id:
+    *                  type: number
+    *               monto:
+    *                  type: number
+    *
+    *     responses:
+    *       200:
+    *         description: Deposito Realizado
+    *       400:
+    *         description: Error al Depositar
+    *       500:
+    *         description: Error de servidor  
+    */
     router.post("/depositar", (req, res) => {
         const payload = req.body;
         depositoCtrl
